@@ -1,0 +1,3299 @@
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+type About {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  content: String
+  slug: String
+  cover: UploadFile
+  locale: String
+  published_at: DateTime
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [About]
+}
+
+input AboutInput {
+  title: String
+  content: String
+  slug: String
+  cover: ID
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+type AdminUser {
+  id: ID!
+  username: String
+  firstname: String!
+  lastname: String!
+}
+
+type Aquatic {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  content: String
+  type: ENUM_AQUATIC_TYPE
+  slug: String
+  careLevel: ENUM_AQUATIC_CARELEVEL
+  breedingLevel: ENUM_AQUATIC_BREEDINGLEVEL
+  tempMin: Int
+  tempMax: Int
+  tempUnit: ENUM_AQUATIC_TEMPUNIT
+  summary: String
+  diet: ENUM_AQUATIC_DIET
+  activeType: ENUM_AQUATIC_ACTIVETYPE
+  gallonsPerFish: Float
+  lifeSpanYear: Int
+  price: Int
+  territ: Int
+  hardnessMin: Int
+  hardnessMax: Int
+  parent: Aquatic
+  phMin: Int
+  phMax: Int
+  schooling: ENUM_AQUATIC_SCHOOLING
+  covers: [ComponentMediaMediaUpload]
+  sizeInch: Float
+  temperament: ENUM_AQUATIC_TEMPERAMENT
+  swimLevel: ENUM_AQUATIC_SWIMLEVEL
+  likes: Int
+  views: Int
+  otherNames: String
+  locale: String
+  published_at: DateTime
+  tags(sort: String, limit: Int, start: Int, where: JSON): [Tag]
+  colors(sort: String, limit: Int, start: Int, where: JSON): [Colors]
+  children(sort: String, limit: Int, start: Int, where: JSON): [Aquatic]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Aquatic]
+}
+
+type AquaticAggregator {
+  count: Int
+  totalCount: Int
+  sum: AquaticAggregatorSum
+  avg: AquaticAggregatorAvg
+  min: AquaticAggregatorMin
+  max: AquaticAggregatorMax
+}
+
+type AquaticAggregatorAvg {
+  tempMin: Float
+  tempMax: Float
+  gallonsPerFish: Float
+  lifeSpanYear: Float
+  price: Float
+  territ: Float
+  hardnessMin: Float
+  hardnessMax: Float
+  phMin: Float
+  phMax: Float
+  sizeInch: Float
+  likes: Float
+  views: Float
+}
+
+type AquaticAggregatorMax {
+  tempMin: Float
+  tempMax: Float
+  gallonsPerFish: Float
+  lifeSpanYear: Float
+  price: Float
+  territ: Float
+  hardnessMin: Float
+  hardnessMax: Float
+  phMin: Float
+  phMax: Float
+  sizeInch: Float
+  likes: Float
+  views: Float
+}
+
+type AquaticAggregatorMin {
+  tempMin: Float
+  tempMax: Float
+  gallonsPerFish: Float
+  lifeSpanYear: Float
+  price: Float
+  territ: Float
+  hardnessMin: Float
+  hardnessMax: Float
+  phMin: Float
+  phMax: Float
+  sizeInch: Float
+  likes: Float
+  views: Float
+}
+
+type AquaticAggregatorSum {
+  tempMin: Float
+  tempMax: Float
+  gallonsPerFish: Float
+  lifeSpanYear: Float
+  price: Float
+  territ: Float
+  hardnessMin: Float
+  hardnessMax: Float
+  phMin: Float
+  phMax: Float
+  sizeInch: Float
+  likes: Float
+  views: Float
+}
+
+type AquaticConnection {
+  values: [Aquatic]
+  groupBy: AquaticGroupBy
+  aggregate: AquaticAggregator
+}
+
+type AquaticConnectionActiveType {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionBreedingLevel {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionCareLevel {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionContent {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionCreated_at {
+  key: DateTime
+  connection: AquaticConnection
+}
+
+type AquaticConnectionDiet {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionGallonsPerFish {
+  key: Float
+  connection: AquaticConnection
+}
+
+type AquaticConnectionHardnessMax {
+  key: Int
+  connection: AquaticConnection
+}
+
+type AquaticConnectionHardnessMin {
+  key: Int
+  connection: AquaticConnection
+}
+
+type AquaticConnectionId {
+  key: ID
+  connection: AquaticConnection
+}
+
+type AquaticConnectionLifeSpanYear {
+  key: Int
+  connection: AquaticConnection
+}
+
+type AquaticConnectionLikes {
+  key: Int
+  connection: AquaticConnection
+}
+
+type AquaticConnectionLocale {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionName {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionOtherNames {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionParent {
+  key: ID
+  connection: AquaticConnection
+}
+
+type AquaticConnectionPhMax {
+  key: Int
+  connection: AquaticConnection
+}
+
+type AquaticConnectionPhMin {
+  key: Int
+  connection: AquaticConnection
+}
+
+type AquaticConnectionPrice {
+  key: Int
+  connection: AquaticConnection
+}
+
+type AquaticConnectionPublished_at {
+  key: DateTime
+  connection: AquaticConnection
+}
+
+type AquaticConnectionSchooling {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionSizeInch {
+  key: Float
+  connection: AquaticConnection
+}
+
+type AquaticConnectionSlug {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionSummary {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionSwimLevel {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionTemperament {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionTempMax {
+  key: Int
+  connection: AquaticConnection
+}
+
+type AquaticConnectionTempMin {
+  key: Int
+  connection: AquaticConnection
+}
+
+type AquaticConnectionTempUnit {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionTerrit {
+  key: Int
+  connection: AquaticConnection
+}
+
+type AquaticConnectionType {
+  key: String
+  connection: AquaticConnection
+}
+
+type AquaticConnectionUpdated_at {
+  key: DateTime
+  connection: AquaticConnection
+}
+
+type AquaticConnectionViews {
+  key: Int
+  connection: AquaticConnection
+}
+
+type AquaticGroupBy {
+  id: [AquaticConnectionId]
+  created_at: [AquaticConnectionCreated_at]
+  updated_at: [AquaticConnectionUpdated_at]
+  name: [AquaticConnectionName]
+  content: [AquaticConnectionContent]
+  type: [AquaticConnectionType]
+  slug: [AquaticConnectionSlug]
+  careLevel: [AquaticConnectionCareLevel]
+  breedingLevel: [AquaticConnectionBreedingLevel]
+  tempMin: [AquaticConnectionTempMin]
+  tempMax: [AquaticConnectionTempMax]
+  tempUnit: [AquaticConnectionTempUnit]
+  summary: [AquaticConnectionSummary]
+  diet: [AquaticConnectionDiet]
+  activeType: [AquaticConnectionActiveType]
+  gallonsPerFish: [AquaticConnectionGallonsPerFish]
+  lifeSpanYear: [AquaticConnectionLifeSpanYear]
+  price: [AquaticConnectionPrice]
+  territ: [AquaticConnectionTerrit]
+  hardnessMin: [AquaticConnectionHardnessMin]
+  hardnessMax: [AquaticConnectionHardnessMax]
+  parent: [AquaticConnectionParent]
+  phMin: [AquaticConnectionPhMin]
+  phMax: [AquaticConnectionPhMax]
+  schooling: [AquaticConnectionSchooling]
+  sizeInch: [AquaticConnectionSizeInch]
+  temperament: [AquaticConnectionTemperament]
+  swimLevel: [AquaticConnectionSwimLevel]
+  likes: [AquaticConnectionLikes]
+  views: [AquaticConnectionViews]
+  otherNames: [AquaticConnectionOtherNames]
+  locale: [AquaticConnectionLocale]
+  published_at: [AquaticConnectionPublished_at]
+}
+
+input AquaticInput {
+  name: String
+  content: String
+  type: ENUM_AQUATIC_TYPE
+  tags: [ID]
+  slug: String
+  colors: [ID]
+  careLevel: ENUM_AQUATIC_CARELEVEL
+  breedingLevel: ENUM_AQUATIC_BREEDINGLEVEL
+  tempMin: Int
+  tempMax: Int
+  tempUnit: ENUM_AQUATIC_TEMPUNIT
+  summary: String
+  diet: ENUM_AQUATIC_DIET
+  activeType: ENUM_AQUATIC_ACTIVETYPE
+  gallonsPerFish: Float
+  lifeSpanYear: Int
+  price: Int
+  territ: Int
+  hardnessMin: Int
+  hardnessMax: Int
+  children: [ID]
+  parent: ID
+  phMin: Int
+  phMax: Int
+  schooling: ENUM_AQUATIC_SCHOOLING
+  covers: [ComponentMediaMediaUploadInput]
+  sizeInch: Float
+  temperament: ENUM_AQUATIC_TEMPERAMENT
+  swimLevel: ENUM_AQUATIC_SWIMLEVEL
+  likes: Int
+  views: Int
+  otherNames: String
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+type Bit {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  desc: String
+  url: String
+  cover: UploadFile
+  users_permissions_user: UsersPermissionsUser
+  type: ENUM_BIT_TYPE
+  locale: String
+  published_at: DateTime
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Bit]
+}
+
+type BitAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type BitConnection {
+  values: [Bit]
+  groupBy: BitGroupBy
+  aggregate: BitAggregator
+}
+
+type BitConnectionCover {
+  key: ID
+  connection: BitConnection
+}
+
+type BitConnectionCreated_at {
+  key: DateTime
+  connection: BitConnection
+}
+
+type BitConnectionDesc {
+  key: String
+  connection: BitConnection
+}
+
+type BitConnectionId {
+  key: ID
+  connection: BitConnection
+}
+
+type BitConnectionLocale {
+  key: String
+  connection: BitConnection
+}
+
+type BitConnectionPublished_at {
+  key: DateTime
+  connection: BitConnection
+}
+
+type BitConnectionTitle {
+  key: String
+  connection: BitConnection
+}
+
+type BitConnectionType {
+  key: String
+  connection: BitConnection
+}
+
+type BitConnectionUpdated_at {
+  key: DateTime
+  connection: BitConnection
+}
+
+type BitConnectionUrl {
+  key: String
+  connection: BitConnection
+}
+
+type BitConnectionUsers_permissions_user {
+  key: ID
+  connection: BitConnection
+}
+
+type BitGroupBy {
+  id: [BitConnectionId]
+  created_at: [BitConnectionCreated_at]
+  updated_at: [BitConnectionUpdated_at]
+  title: [BitConnectionTitle]
+  desc: [BitConnectionDesc]
+  url: [BitConnectionUrl]
+  cover: [BitConnectionCover]
+  users_permissions_user: [BitConnectionUsers_permissions_user]
+  type: [BitConnectionType]
+  locale: [BitConnectionLocale]
+  published_at: [BitConnectionPublished_at]
+}
+
+input BitInput {
+  title: String
+  desc: String
+  url: String
+  cover: ID
+  users_permissions_user: ID
+  type: ENUM_BIT_TYPE
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+type CheckAvailabilityPayload {
+  username: Boolean
+  email: Boolean
+}
+
+input ColorInput {
+  name: String
+  hex: String
+  localizations: [ID]
+  locale: String
+  created_by: ID
+  updated_by: ID
+}
+
+type Colors {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  hex: String
+  locale: String
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Colors]
+}
+
+type ColorsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ColorsConnection {
+  values: [Colors]
+  groupBy: ColorsGroupBy
+  aggregate: ColorsAggregator
+}
+
+type ColorsConnectionCreated_at {
+  key: DateTime
+  connection: ColorsConnection
+}
+
+type ColorsConnectionHex {
+  key: String
+  connection: ColorsConnection
+}
+
+type ColorsConnectionId {
+  key: ID
+  connection: ColorsConnection
+}
+
+type ColorsConnectionLocale {
+  key: String
+  connection: ColorsConnection
+}
+
+type ColorsConnectionName {
+  key: String
+  connection: ColorsConnection
+}
+
+type ColorsConnectionUpdated_at {
+  key: DateTime
+  connection: ColorsConnection
+}
+
+type ColorsGroupBy {
+  id: [ColorsConnectionId]
+  created_at: [ColorsConnectionCreated_at]
+  updated_at: [ColorsConnectionUpdated_at]
+  name: [ColorsConnectionName]
+  hex: [ColorsConnectionHex]
+  locale: [ColorsConnectionLocale]
+}
+
+type ComponentMediaMediaUpload {
+  id: ID!
+  media: UploadFile
+  name: String
+  link: String
+  user: UsersPermissionsUser
+  desc: String
+  mediaType: ENUM_COMPONENTMEDIAMEDIAUPLOAD_MEDIATYPE
+  status: ENUM_COMPONENTMEDIAMEDIAUPLOAD_STATUS
+}
+
+input ComponentMediaMediaUploadInput {
+  media: ID
+  name: String
+  link: String
+  user: ID
+  desc: String
+  mediaType: ENUM_COMPONENTMEDIAMEDIAUPLOAD_MEDIATYPE
+  status: ENUM_COMPONENTMEDIAMEDIAUPLOAD_STATUS
+}
+
+input ComponentQuestionOptionInput {
+  label: String
+  value: String
+  question: ID
+}
+
+type ComponentQuestionOptions {
+  id: ID!
+  label: String
+  value: String
+  question: Question
+}
+
+type Contribute {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  desc: String
+  type: ENUM_CONTRIBUTE_TYPE
+  link: String
+  target: String
+  aquatic: Aquatic
+  published_at: DateTime
+  covers(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type ContributeAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ContributeConnection {
+  values: [Contribute]
+  groupBy: ContributeGroupBy
+  aggregate: ContributeAggregator
+}
+
+type ContributeConnectionAquatic {
+  key: ID
+  connection: ContributeConnection
+}
+
+type ContributeConnectionCreated_at {
+  key: DateTime
+  connection: ContributeConnection
+}
+
+type ContributeConnectionDesc {
+  key: String
+  connection: ContributeConnection
+}
+
+type ContributeConnectionId {
+  key: ID
+  connection: ContributeConnection
+}
+
+type ContributeConnectionLink {
+  key: String
+  connection: ContributeConnection
+}
+
+type ContributeConnectionPublished_at {
+  key: DateTime
+  connection: ContributeConnection
+}
+
+type ContributeConnectionTarget {
+  key: String
+  connection: ContributeConnection
+}
+
+type ContributeConnectionType {
+  key: String
+  connection: ContributeConnection
+}
+
+type ContributeConnectionUpdated_at {
+  key: DateTime
+  connection: ContributeConnection
+}
+
+type ContributeGroupBy {
+  id: [ContributeConnectionId]
+  created_at: [ContributeConnectionCreated_at]
+  updated_at: [ContributeConnectionUpdated_at]
+  desc: [ContributeConnectionDesc]
+  type: [ContributeConnectionType]
+  link: [ContributeConnectionLink]
+  target: [ContributeConnectionTarget]
+  aquatic: [ContributeConnectionAquatic]
+  published_at: [ContributeConnectionPublished_at]
+}
+
+input ContributeInput {
+  desc: String
+  type: ENUM_CONTRIBUTE_TYPE
+  covers: [ID]
+  link: String
+  target: String
+  aquatic: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createAquaticInput {
+  data: AquaticInput
+}
+
+type createAquaticPayload {
+  aquatic: Aquatic
+}
+
+input createBitInput {
+  data: BitInput
+}
+
+type createBitPayload {
+  bit: Bit
+}
+
+input createColorInput {
+  data: ColorInput
+}
+
+type createColorPayload {
+  color: Colors
+}
+
+input createContributeInput {
+  data: ContributeInput
+}
+
+type createContributePayload {
+  contribute: Contribute
+}
+
+input createFunFactInput {
+  data: FunFactInput
+}
+
+type createFunFactPayload {
+  funFact: FunFact
+}
+
+input createPostInput {
+  data: PostInput
+}
+
+type createPostPayload {
+  post: Post
+}
+
+input createPostTagInput {
+  data: PostTagInput
+}
+
+type createPostTagPayload {
+  postTag: PostTag
+}
+
+input createProductInput {
+  data: ProductInput
+}
+
+type createProductPayload {
+  product: Product
+}
+
+input createQuestionInput {
+  data: QuestionInput
+}
+
+type createQuestionPayload {
+  question: Question
+}
+
+input createQuestionSetInput {
+  data: QuestionSetInput
+}
+
+type createQuestionSetPayload {
+  questionSet: QuestionSet
+}
+
+input createResolutionInput {
+  data: ResolutionInput
+}
+
+type createResolutionPayload {
+  resolution: Resolution
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createTagInput {
+  data: TagInput
+}
+
+type createTagPayload {
+  tag: Tag
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input createUserProfileInput {
+  data: UserProfileInput
+}
+
+type createUserProfilePayload {
+  userProfile: UserProfile
+}
+
+input createUserUploadInput {
+  data: UserUploadInput
+}
+
+type createUserUploadPayload {
+  userUpload: UserUploads
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+type deleteAboutPayload {
+  about: About
+}
+
+input deleteAquaticInput {
+  where: InputID
+}
+
+type deleteAquaticPayload {
+  aquatic: Aquatic
+}
+
+input deleteBitInput {
+  where: InputID
+}
+
+type deleteBitPayload {
+  bit: Bit
+}
+
+input deleteColorInput {
+  where: InputID
+}
+
+type deleteColorPayload {
+  color: Colors
+}
+
+input deleteContributeInput {
+  where: InputID
+}
+
+type deleteContributePayload {
+  contribute: Contribute
+}
+
+input deleteFileInput {
+  where: InputID
+}
+
+type deleteFilePayload {
+  file: UploadFile
+}
+
+input deleteFunFactInput {
+  where: InputID
+}
+
+type deleteFunFactPayload {
+  funFact: FunFact
+}
+
+input deletePostInput {
+  where: InputID
+}
+
+type deletePostPayload {
+  post: Post
+}
+
+input deletePostTagInput {
+  where: InputID
+}
+
+type deletePostTagPayload {
+  postTag: PostTag
+}
+
+input deleteProductInput {
+  where: InputID
+}
+
+type deleteProductPayload {
+  product: Product
+}
+
+input deleteQuestionInput {
+  where: InputID
+}
+
+type deleteQuestionPayload {
+  question: Question
+}
+
+input deleteQuestionSetInput {
+  where: InputID
+}
+
+type deleteQuestionSetPayload {
+  questionSet: QuestionSet
+}
+
+input deleteResolutionInput {
+  where: InputID
+}
+
+type deleteResolutionPayload {
+  resolution: Resolution
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteTagInput {
+  where: InputID
+}
+
+type deleteTagPayload {
+  tag: Tag
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteUserProfileInput {
+  where: InputID
+}
+
+type deleteUserProfilePayload {
+  userProfile: UserProfile
+}
+
+input deleteUserUploadInput {
+  where: InputID
+}
+
+type deleteUserUploadPayload {
+  userUpload: UserUploads
+}
+
+type deleteWelcomePayload {
+  welcome: Welcome
+}
+
+input editAboutInput {
+  title: String
+  content: String
+  slug: String
+  cover: ID
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editAquaticInput {
+  name: String
+  content: String
+  type: ENUM_AQUATIC_TYPE
+  tags: [ID]
+  slug: String
+  colors: [ID]
+  careLevel: ENUM_AQUATIC_CARELEVEL
+  breedingLevel: ENUM_AQUATIC_BREEDINGLEVEL
+  tempMin: Int
+  tempMax: Int
+  tempUnit: ENUM_AQUATIC_TEMPUNIT
+  summary: String
+  diet: ENUM_AQUATIC_DIET
+  activeType: ENUM_AQUATIC_ACTIVETYPE
+  gallonsPerFish: Float
+  lifeSpanYear: Int
+  price: Int
+  territ: Int
+  hardnessMin: Int
+  hardnessMax: Int
+  children: [ID]
+  parent: ID
+  phMin: Int
+  phMax: Int
+  schooling: ENUM_AQUATIC_SCHOOLING
+  covers: [editComponentMediaMediaUploadInput]
+  sizeInch: Float
+  temperament: ENUM_AQUATIC_TEMPERAMENT
+  swimLevel: ENUM_AQUATIC_SWIMLEVEL
+  likes: Int
+  views: Int
+  otherNames: String
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editBitInput {
+  title: String
+  desc: String
+  url: String
+  cover: ID
+  users_permissions_user: ID
+  type: ENUM_BIT_TYPE
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editColorInput {
+  name: String
+  hex: String
+  localizations: [ID]
+  locale: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editComponentMediaMediaUploadInput {
+  id: ID
+  media: ID
+  name: String
+  link: String
+  user: ID
+  desc: String
+  mediaType: ENUM_COMPONENTMEDIAMEDIAUPLOAD_MEDIATYPE
+  status: ENUM_COMPONENTMEDIAMEDIAUPLOAD_STATUS
+}
+
+input editComponentQuestionOptionInput {
+  id: ID
+  label: String
+  value: String
+  question: ID
+}
+
+input editContributeInput {
+  desc: String
+  type: ENUM_CONTRIBUTE_TYPE
+  covers: [ID]
+  link: String
+  target: String
+  aquatic: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editEmailTemplateInput {
+  sourceCodeToTemplateId: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  enabled: Boolean
+  tags: JSON
+  created_by: ID
+  updated_by: ID
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editFunFactInput {
+  content: String
+  aquatic: ID
+  author: ID
+  covers: [ID]
+  status: ENUM_FUNFACT_STATUS
+  category: ENUM_FUNFACT_CATEGORY
+  localizations: [ID]
+  locale: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editLocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editPostInput {
+  title: String
+  desc: String
+  content: String
+  covers: [ID]
+  bits: [ID]
+  user: ID
+  relatedPosts: [ID]
+  readingTime: Int
+  viewCount: Long
+  bookmarkCount: Long
+  slug: String
+  postTags: [ID]
+  tags: [ID]
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editPostTagInput {
+  name: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editProductInput {
+  name: String
+  desc: String
+  price: Float
+  syncedAt: DateTime
+  status: ENUM_PRODUCT_STATUS
+  category: ENUM_PRODUCT_CATEGORY
+  slug: String
+  media: [ID]
+  clickCount: Int
+  user: ID
+  link: String
+  keys: String
+  rejectNote: String
+  aquatic: ID
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editQuestionInput {
+  title: String
+  valueKey: String
+  images: [ID]
+  options: [editComponentQuestionOptionInput]
+  questionSet: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editQuestionSetInput {
+  desc: String
+  viewCount: Long
+  resolutions: [ID]
+  fallbackResolution: ID
+  content: String
+  title: String
+  questions: [ID]
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editResolutionInput {
+  title: String
+  desc: String
+  condition: JSON
+  covers: [ID]
+  question_sets: [ID]
+  content: String
+  posts: [ID]
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editTagInput {
+  name: String
+  content: String
+  covers: [ID]
+  slug: String
+  tags: [ID]
+  summary: String
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  tokenVersion: Int
+  userProfile: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserProfileInput {
+  username: String
+  cover: ID
+  user: ID
+  profileImageUrl: String
+  subsNews: Boolean
+  subsEvent: Boolean
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserUploadInput {
+  cover: editComponentMediaMediaUploadInput
+  aquatic: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editWelcomeInput {
+  title: String
+  content: String
+  cover: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+type EmailDesignerEmailTemplate {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  sourceCodeToTemplateId: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  enabled: Boolean
+  tags: JSON
+}
+
+input EmailTemplateInput {
+  sourceCodeToTemplateId: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  enabled: Boolean
+  tags: JSON
+  created_by: ID
+  updated_by: ID
+}
+
+enum ENUM_AQUATIC_ACTIVETYPE {
+  diurnal
+  nocturnal
+  crepuscular
+  alltime
+}
+
+enum ENUM_AQUATIC_BREEDINGLEVEL {
+  easy
+  moderate
+  difficult
+}
+
+enum ENUM_AQUATIC_CARELEVEL {
+  easy
+  moderate
+  difficult
+}
+
+enum ENUM_AQUATIC_DIET {
+  omnivore
+  carnivore
+  herbivore
+}
+
+enum ENUM_AQUATIC_SCHOOLING {
+  schooling
+  semischooling
+}
+
+enum ENUM_AQUATIC_SWIMLEVEL {
+  top
+  middle
+  bottom
+  any
+}
+
+enum ENUM_AQUATIC_TEMPERAMENT {
+  peaceful
+  moderate
+  aggressive
+}
+
+enum ENUM_AQUATIC_TEMPUNIT {
+  F
+  C
+}
+
+enum ENUM_AQUATIC_TYPE {
+  fish
+  frog
+}
+
+enum ENUM_BIT_TYPE {
+  youtube
+  instagram
+  blog
+  site
+  commerce
+  facebook
+}
+
+enum ENUM_COMPONENTMEDIAMEDIAUPLOAD_MEDIATYPE {
+  image
+  video
+  web
+}
+
+enum ENUM_COMPONENTMEDIAMEDIAUPLOAD_STATUS {
+  draft
+  rejected
+  approved
+}
+
+enum ENUM_CONTRIBUTE_TYPE {
+  info
+  photo
+  videolink
+  weblink
+  funfact
+}
+
+enum ENUM_FUNFACT_CATEGORY {
+  feeding
+  breeding
+  diet
+  temperature
+  care
+  swimming
+  temperament
+  activity
+  behavior
+  funfact
+  etc
+}
+
+enum ENUM_FUNFACT_STATUS {
+  review
+  approved
+  deleted
+  rejected
+}
+
+enum ENUM_PRODUCT_CATEGORY {
+  sticker
+  clothing
+  bag
+  craft
+  art
+  etc
+}
+
+enum ENUM_PRODUCT_STATUS {
+  review
+  approved
+  deleted
+  rejected
+}
+
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+type FunFact {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  content: String
+  aquatic: Aquatic
+  author: UsersPermissionsUser
+  status: ENUM_FUNFACT_STATUS
+  category: ENUM_FUNFACT_CATEGORY
+  locale: String
+  covers(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [FunFact]
+}
+
+type FunFactAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type FunFactConnection {
+  values: [FunFact]
+  groupBy: FunFactGroupBy
+  aggregate: FunFactAggregator
+}
+
+type FunFactConnectionAquatic {
+  key: ID
+  connection: FunFactConnection
+}
+
+type FunFactConnectionAuthor {
+  key: ID
+  connection: FunFactConnection
+}
+
+type FunFactConnectionCategory {
+  key: String
+  connection: FunFactConnection
+}
+
+type FunFactConnectionContent {
+  key: String
+  connection: FunFactConnection
+}
+
+type FunFactConnectionCreated_at {
+  key: DateTime
+  connection: FunFactConnection
+}
+
+type FunFactConnectionId {
+  key: ID
+  connection: FunFactConnection
+}
+
+type FunFactConnectionLocale {
+  key: String
+  connection: FunFactConnection
+}
+
+type FunFactConnectionStatus {
+  key: String
+  connection: FunFactConnection
+}
+
+type FunFactConnectionUpdated_at {
+  key: DateTime
+  connection: FunFactConnection
+}
+
+type FunFactGroupBy {
+  id: [FunFactConnectionId]
+  created_at: [FunFactConnectionCreated_at]
+  updated_at: [FunFactConnectionUpdated_at]
+  content: [FunFactConnectionContent]
+  aquatic: [FunFactConnectionAquatic]
+  author: [FunFactConnectionAuthor]
+  status: [FunFactConnectionStatus]
+  category: [FunFactConnectionCategory]
+  locale: [FunFactConnectionLocale]
+}
+
+input FunFactInput {
+  content: String
+  aquatic: ID
+  author: ID
+  covers: [ID]
+  status: ENUM_FUNFACT_STATUS
+  category: ENUM_FUNFACT_CATEGORY
+  localizations: [ID]
+  locale: String
+  created_by: ID
+  updated_by: ID
+}
+
+type I18NLocale {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  code: String
+}
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+input LocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | UsersPermissionsRefreshTokenPayload | UsersPermissionsLogoutPayload | CheckAvailabilityPayload | UsersPermissionsRevokeTokenPayload | About | updateAboutPayload | deleteAboutPayload | Aquatic | AquaticConnection | AquaticAggregator | AquaticAggregatorSum | AquaticAggregatorAvg | AquaticAggregatorMin | AquaticAggregatorMax | AquaticGroupBy | AquaticConnectionId | AquaticConnectionCreated_at | AquaticConnectionUpdated_at | AquaticConnectionName | AquaticConnectionContent | AquaticConnectionType | AquaticConnectionSlug | AquaticConnectionCareLevel | AquaticConnectionBreedingLevel | AquaticConnectionTempMin | AquaticConnectionTempMax | AquaticConnectionTempUnit | AquaticConnectionSummary | AquaticConnectionDiet | AquaticConnectionActiveType | AquaticConnectionGallonsPerFish | AquaticConnectionLifeSpanYear | AquaticConnectionPrice | AquaticConnectionTerrit | AquaticConnectionHardnessMin | AquaticConnectionHardnessMax | AquaticConnectionParent | AquaticConnectionPhMin | AquaticConnectionPhMax | AquaticConnectionSchooling | AquaticConnectionSizeInch | AquaticConnectionTemperament | AquaticConnectionSwimLevel | AquaticConnectionLikes | AquaticConnectionViews | AquaticConnectionOtherNames | AquaticConnectionLocale | AquaticConnectionPublished_at | createAquaticPayload | updateAquaticPayload | deleteAquaticPayload | Bit | BitConnection | BitAggregator | BitGroupBy | BitConnectionId | BitConnectionCreated_at | BitConnectionUpdated_at | BitConnectionTitle | BitConnectionDesc | BitConnectionUrl | BitConnectionCover | BitConnectionUsers_permissions_user | BitConnectionType | BitConnectionLocale | BitConnectionPublished_at | createBitPayload | updateBitPayload | deleteBitPayload | Colors | ColorsConnection | ColorsAggregator | ColorsGroupBy | ColorsConnectionId | ColorsConnectionCreated_at | ColorsConnectionUpdated_at | ColorsConnectionName | ColorsConnectionHex | ColorsConnectionLocale | createColorPayload | updateColorPayload | deleteColorPayload | Contribute | ContributeConnection | ContributeAggregator | ContributeGroupBy | ContributeConnectionId | ContributeConnectionCreated_at | ContributeConnectionUpdated_at | ContributeConnectionDesc | ContributeConnectionType | ContributeConnectionLink | ContributeConnectionTarget | ContributeConnectionAquatic | ContributeConnectionPublished_at | createContributePayload | updateContributePayload | deleteContributePayload | FunFact | FunFactConnection | FunFactAggregator | FunFactGroupBy | FunFactConnectionId | FunFactConnectionCreated_at | FunFactConnectionUpdated_at | FunFactConnectionContent | FunFactConnectionAquatic | FunFactConnectionAuthor | FunFactConnectionStatus | FunFactConnectionCategory | FunFactConnectionLocale | createFunFactPayload | updateFunFactPayload | deleteFunFactPayload | PostTag | PostTagConnection | PostTagAggregator | PostTagGroupBy | PostTagConnectionId | PostTagConnectionCreated_at | PostTagConnectionUpdated_at | PostTagConnectionName | createPostTagPayload | updatePostTagPayload | deletePostTagPayload | Post | PostConnection | PostAggregator | PostAggregatorSum | PostAggregatorAvg | PostAggregatorMin | PostAggregatorMax | PostGroupBy | PostConnectionId | PostConnectionCreated_at | PostConnectionUpdated_at | PostConnectionTitle | PostConnectionDesc | PostConnectionContent | PostConnectionUser | PostConnectionReadingTime | PostConnectionViewCount | PostConnectionBookmarkCount | PostConnectionSlug | PostConnectionLocale | PostConnectionPublished_at | createPostPayload | updatePostPayload | deletePostPayload | Product | ProductConnection | ProductAggregator | ProductAggregatorSum | ProductAggregatorAvg | ProductAggregatorMin | ProductAggregatorMax | ProductGroupBy | ProductConnectionId | ProductConnectionCreated_at | ProductConnectionUpdated_at | ProductConnectionName | ProductConnectionDesc | ProductConnectionPrice | ProductConnectionSyncedAt | ProductConnectionStatus | ProductConnectionCategory | ProductConnectionSlug | ProductConnectionClickCount | ProductConnectionUser | ProductConnectionLink | ProductConnectionKeys | ProductConnectionRejectNote | ProductConnectionAquatic | ProductConnectionLocale | ProductConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | QuestionSet | QuestionSetConnection | QuestionSetAggregator | QuestionSetGroupBy | QuestionSetConnectionId | QuestionSetConnectionCreated_at | QuestionSetConnectionUpdated_at | QuestionSetConnectionDesc | QuestionSetConnectionViewCount | QuestionSetConnectionFallbackResolution | QuestionSetConnectionContent | QuestionSetConnectionTitle | QuestionSetConnectionLocale | QuestionSetConnectionPublished_at | createQuestionSetPayload | updateQuestionSetPayload | deleteQuestionSetPayload | Question | QuestionConnection | QuestionAggregator | QuestionGroupBy | QuestionConnectionId | QuestionConnectionCreated_at | QuestionConnectionUpdated_at | QuestionConnectionTitle | QuestionConnectionValueKey | QuestionConnectionQuestionSet | QuestionConnectionPublished_at | createQuestionPayload | updateQuestionPayload | deleteQuestionPayload | Resolution | ResolutionConnection | ResolutionAggregator | ResolutionGroupBy | ResolutionConnectionId | ResolutionConnectionCreated_at | ResolutionConnectionUpdated_at | ResolutionConnectionTitle | ResolutionConnectionDesc | ResolutionConnectionCondition | ResolutionConnectionContent | ResolutionConnectionLocale | ResolutionConnectionPublished_at | createResolutionPayload | updateResolutionPayload | deleteResolutionPayload | Tag | TagConnection | TagAggregator | TagGroupBy | TagConnectionId | TagConnectionCreated_at | TagConnectionUpdated_at | TagConnectionName | TagConnectionContent | TagConnectionSlug | TagConnectionSummary | TagConnectionLocale | TagConnectionPublished_at | createTagPayload | updateTagPayload | deleteTagPayload | UserProfile | UserProfileConnection | UserProfileAggregator | UserProfileGroupBy | UserProfileConnectionId | UserProfileConnectionCreated_at | UserProfileConnectionUpdated_at | UserProfileConnectionUsername | UserProfileConnectionCover | UserProfileConnectionUser | UserProfileConnectionProfileImageUrl | UserProfileConnectionSubsNews | UserProfileConnectionSubsEvent | createUserProfilePayload | updateUserProfilePayload | deleteUserProfilePayload | UserUploads | UserUploadsConnection | UserUploadsAggregator | UserUploadsGroupBy | UserUploadsConnectionId | UserUploadsConnectionCreated_at | UserUploadsConnectionUpdated_at | UserUploadsConnectionCover | UserUploadsConnectionAquatic | UserUploadsConnectionPublished_at | createUserUploadPayload | updateUserUploadPayload | deleteUserUploadPayload | Welcome | updateWelcomePayload | deleteWelcomePayload | EmailDesignerEmailTemplate | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserAggregatorSum | UsersPermissionsUserAggregatorAvg | UsersPermissionsUserAggregatorMin | UsersPermissionsUserAggregatorMax | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionTokenVersion | UsersPermissionsUserConnectionUserProfile | createUserPayload | updateUserPayload | deleteUserPayload | ComponentMediaMediaUpload | ComponentQuestionOptions
+
+type Mutation {
+  updateAbout(input: updateAboutInput, locale: String): updateAboutPayload
+  deleteAbout(locale: String): deleteAboutPayload
+  createAquatic(input: createAquaticInput): createAquaticPayload
+  updateAquatic(input: updateAquaticInput): updateAquaticPayload
+  deleteAquatic(input: deleteAquaticInput): deleteAquaticPayload
+  createBit(input: createBitInput): createBitPayload
+  updateBit(input: updateBitInput): updateBitPayload
+  deleteBit(input: deleteBitInput): deleteBitPayload
+  createColor(input: createColorInput): createColorPayload
+  updateColor(input: updateColorInput): updateColorPayload
+  deleteColor(input: deleteColorInput): deleteColorPayload
+  createContribute(input: createContributeInput): createContributePayload
+  updateContribute(input: updateContributeInput): updateContributePayload
+  deleteContribute(input: deleteContributeInput): deleteContributePayload
+  createFunFact(input: createFunFactInput): createFunFactPayload
+
+  """update funfact"""
+  updateFunFact(input: updateFunFactInput): updateFunFactPayload
+  deleteFunFact(input: deleteFunFactInput): deleteFunFactPayload
+  createPostTag(input: createPostTagInput): createPostTagPayload
+  updatePostTag(input: updatePostTagInput): updatePostTagPayload
+  deletePostTag(input: deletePostTagInput): deletePostTagPayload
+  createPost(input: createPostInput): createPostPayload
+  updatePost(input: updatePostInput): updatePostPayload
+  deletePost(input: deletePostInput): deletePostPayload
+  createProduct(input: createProductInput): createProductPayload
+  updateProduct(input: updateProductInput): updateProductPayload
+  deleteProduct(input: deleteProductInput): deleteProductPayload
+  createQuestionSet(input: createQuestionSetInput): createQuestionSetPayload
+  updateQuestionSet(input: updateQuestionSetInput): updateQuestionSetPayload
+  deleteQuestionSet(input: deleteQuestionSetInput): deleteQuestionSetPayload
+  createQuestion(input: createQuestionInput): createQuestionPayload
+  updateQuestion(input: updateQuestionInput): updateQuestionPayload
+  deleteQuestion(input: deleteQuestionInput): deleteQuestionPayload
+  createResolution(input: createResolutionInput): createResolutionPayload
+  updateResolution(input: updateResolutionInput): updateResolutionPayload
+  deleteResolution(input: deleteResolutionInput): deleteResolutionPayload
+  createTag(input: createTagInput): createTagPayload
+  updateTag(input: updateTagInput): updateTagPayload
+  deleteTag(input: deleteTagInput): deleteTagPayload
+  createUserProfile(input: createUserProfileInput): createUserProfilePayload
+  updateUserProfile(input: updateUserProfileInput): updateUserProfilePayload
+  deleteUserProfile(input: deleteUserProfileInput): deleteUserProfilePayload
+  createUserUpload(input: createUserUploadInput): createUserUploadPayload
+  updateUserUpload(input: updateUserUploadInput): updateUserUploadPayload
+  deleteUserUpload(input: deleteUserUploadInput): deleteUserUploadPayload
+  updateWelcome(input: updateWelcomeInput): updateWelcomePayload
+  deleteWelcome: deleteWelcomePayload
+
+  """Delete one file"""
+  deleteFile(input: deleteFileInput): deleteFilePayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  createAboutLocalization(input: updateAboutInput!): About!
+  createAquaticLocalization(input: updateAquaticInput!): Aquatic!
+  createBitLocalization(input: updateBitInput!): Bit!
+  createColorLocalization(input: updateColorInput!): Colors!
+  createFunFactLocalization(input: updateFunFactInput!): FunFact!
+  createPostLocalization(input: updatePostInput!): Post!
+  createProductLocalization(input: updateProductInput!): Product!
+  createQuestionSetLocalization(input: updateQuestionSetInput!): QuestionSet!
+  createResolutionLocalization(input: updateResolutionInput!): Resolution!
+  createTagLocalization(input: updateTagInput!): Tag!
+  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+  logout: UsersPermissionsLogoutPayload!
+  refreshToken(renew: Boolean): UsersPermissionsRefreshTokenPayload!
+  revokeToken(token: String!): UsersPermissionsRevokeTokenPayload!
+}
+
+type Post {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  desc: String
+  content: String
+  user: UsersPermissionsUser
+  readingTime: Int
+  viewCount: Long
+  bookmarkCount: Long
+  slug: String!
+  locale: String
+  published_at: DateTime
+  covers(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  bits(sort: String, limit: Int, start: Int, where: JSON): [Bit]
+  relatedPosts(sort: String, limit: Int, start: Int, where: JSON): [Post]
+  postTags(sort: String, limit: Int, start: Int, where: JSON): [PostTag]
+  tags(sort: String, limit: Int, start: Int, where: JSON): [Tag]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Post]
+}
+
+type PostAggregator {
+  count: Int
+  totalCount: Int
+  sum: PostAggregatorSum
+  avg: PostAggregatorAvg
+  min: PostAggregatorMin
+  max: PostAggregatorMax
+}
+
+type PostAggregatorAvg {
+  readingTime: Float
+}
+
+type PostAggregatorMax {
+  readingTime: Float
+}
+
+type PostAggregatorMin {
+  readingTime: Float
+}
+
+type PostAggregatorSum {
+  readingTime: Float
+}
+
+type PostConnection {
+  values: [Post]
+  groupBy: PostGroupBy
+  aggregate: PostAggregator
+}
+
+type PostConnectionBookmarkCount {
+  key: ID
+  connection: PostConnection
+}
+
+type PostConnectionContent {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionCreated_at {
+  key: DateTime
+  connection: PostConnection
+}
+
+type PostConnectionDesc {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionId {
+  key: ID
+  connection: PostConnection
+}
+
+type PostConnectionLocale {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionPublished_at {
+  key: DateTime
+  connection: PostConnection
+}
+
+type PostConnectionReadingTime {
+  key: Int
+  connection: PostConnection
+}
+
+type PostConnectionSlug {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionTitle {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionUpdated_at {
+  key: DateTime
+  connection: PostConnection
+}
+
+type PostConnectionUser {
+  key: ID
+  connection: PostConnection
+}
+
+type PostConnectionViewCount {
+  key: ID
+  connection: PostConnection
+}
+
+type PostGroupBy {
+  id: [PostConnectionId]
+  created_at: [PostConnectionCreated_at]
+  updated_at: [PostConnectionUpdated_at]
+  title: [PostConnectionTitle]
+  desc: [PostConnectionDesc]
+  content: [PostConnectionContent]
+  user: [PostConnectionUser]
+  readingTime: [PostConnectionReadingTime]
+  viewCount: [PostConnectionViewCount]
+  bookmarkCount: [PostConnectionBookmarkCount]
+  slug: [PostConnectionSlug]
+  locale: [PostConnectionLocale]
+  published_at: [PostConnectionPublished_at]
+}
+
+input PostInput {
+  title: String
+  desc: String
+  content: String
+  covers: [ID]
+  bits: [ID]
+  user: ID
+  relatedPosts: [ID]
+  readingTime: Int
+  viewCount: Long
+  bookmarkCount: Long
+  slug: String!
+  postTags: [ID]
+  tags: [ID]
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+type PostTag {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+}
+
+type PostTagAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PostTagConnection {
+  values: [PostTag]
+  groupBy: PostTagGroupBy
+  aggregate: PostTagAggregator
+}
+
+type PostTagConnectionCreated_at {
+  key: DateTime
+  connection: PostTagConnection
+}
+
+type PostTagConnectionId {
+  key: ID
+  connection: PostTagConnection
+}
+
+type PostTagConnectionName {
+  key: String
+  connection: PostTagConnection
+}
+
+type PostTagConnectionUpdated_at {
+  key: DateTime
+  connection: PostTagConnection
+}
+
+type PostTagGroupBy {
+  id: [PostTagConnectionId]
+  created_at: [PostTagConnectionCreated_at]
+  updated_at: [PostTagConnectionUpdated_at]
+  name: [PostTagConnectionName]
+}
+
+input PostTagInput {
+  name: String
+  created_by: ID
+  updated_by: ID
+}
+
+type Product {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  desc: String
+  price: Float
+  syncedAt: DateTime
+  status: ENUM_PRODUCT_STATUS
+  category: ENUM_PRODUCT_CATEGORY
+  slug: String
+  clickCount: Int
+  user: UsersPermissionsUser
+  link: String
+  keys: String
+  rejectNote: String
+  aquatic: Aquatic
+  locale: String
+  published_at: DateTime
+  media(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Product]
+}
+
+type ProductAggregator {
+  count: Int
+  totalCount: Int
+  sum: ProductAggregatorSum
+  avg: ProductAggregatorAvg
+  min: ProductAggregatorMin
+  max: ProductAggregatorMax
+}
+
+type ProductAggregatorAvg {
+  price: Float
+  clickCount: Float
+}
+
+type ProductAggregatorMax {
+  price: Float
+  clickCount: Float
+}
+
+type ProductAggregatorMin {
+  price: Float
+  clickCount: Float
+}
+
+type ProductAggregatorSum {
+  price: Float
+  clickCount: Float
+}
+
+type ProductConnection {
+  values: [Product]
+  groupBy: ProductGroupBy
+  aggregate: ProductAggregator
+}
+
+type ProductConnectionAquatic {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionCategory {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionClickCount {
+  key: Int
+  connection: ProductConnection
+}
+
+type ProductConnectionCreated_at {
+  key: DateTime
+  connection: ProductConnection
+}
+
+type ProductConnectionDesc {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionId {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionKeys {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionLink {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionLocale {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionName {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionPrice {
+  key: Float
+  connection: ProductConnection
+}
+
+type ProductConnectionPublished_at {
+  key: DateTime
+  connection: ProductConnection
+}
+
+type ProductConnectionRejectNote {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionSlug {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionStatus {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionSyncedAt {
+  key: DateTime
+  connection: ProductConnection
+}
+
+type ProductConnectionUpdated_at {
+  key: DateTime
+  connection: ProductConnection
+}
+
+type ProductConnectionUser {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductGroupBy {
+  id: [ProductConnectionId]
+  created_at: [ProductConnectionCreated_at]
+  updated_at: [ProductConnectionUpdated_at]
+  name: [ProductConnectionName]
+  desc: [ProductConnectionDesc]
+  price: [ProductConnectionPrice]
+  syncedAt: [ProductConnectionSyncedAt]
+  status: [ProductConnectionStatus]
+  category: [ProductConnectionCategory]
+  slug: [ProductConnectionSlug]
+  clickCount: [ProductConnectionClickCount]
+  user: [ProductConnectionUser]
+  link: [ProductConnectionLink]
+  keys: [ProductConnectionKeys]
+  rejectNote: [ProductConnectionRejectNote]
+  aquatic: [ProductConnectionAquatic]
+  locale: [ProductConnectionLocale]
+  published_at: [ProductConnectionPublished_at]
+}
+
+input ProductInput {
+  name: String
+  desc: String
+  price: Float
+  syncedAt: DateTime
+  status: ENUM_PRODUCT_STATUS
+  category: ENUM_PRODUCT_CATEGORY
+  slug: String
+  media: [ID]
+  clickCount: Int
+  user: ID
+  link: String
+  keys: String
+  rejectNote: String
+  aquatic: ID
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type Query {
+  about(publicationState: PublicationState, locale: String): About
+  aquatic(id: ID!, publicationState: PublicationState): Aquatic
+  aquatics(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Aquatic]
+  aquaticsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): AquaticConnection
+  bit(id: ID!, publicationState: PublicationState): Bit
+  bits(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Bit]
+  bitsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): BitConnection
+  color(id: ID!, publicationState: PublicationState): Colors
+  colors(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Colors]
+  colorsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): ColorsConnection
+  contribute(id: ID!, publicationState: PublicationState): Contribute
+  contributes(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Contribute]
+  contributesConnection(sort: String, limit: Int, start: Int, where: JSON): ContributeConnection
+  funFact(id: ID!, publicationState: PublicationState): FunFact
+  funFacts(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [FunFact]
+  funFactsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): FunFactConnection
+  postTag(id: ID!, publicationState: PublicationState): PostTag
+  postTags(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [PostTag]
+  postTagsConnection(sort: String, limit: Int, start: Int, where: JSON): PostTagConnection
+  post(id: ID!, publicationState: PublicationState): Post
+  posts(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Post]
+  postsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): PostConnection
+  product(id: ID!, publicationState: PublicationState): Product
+  products(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Product]
+  productsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): ProductConnection
+  questionSet(id: ID!, publicationState: PublicationState): QuestionSet
+  questionSets(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [QuestionSet]
+  questionSetsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): QuestionSetConnection
+  question(id: ID!, publicationState: PublicationState): Question
+  questions(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Question]
+  questionsConnection(sort: String, limit: Int, start: Int, where: JSON): QuestionConnection
+  resolution(id: ID!, publicationState: PublicationState): Resolution
+  resolutions(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Resolution]
+  resolutionsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): ResolutionConnection
+  tag(id: ID!, publicationState: PublicationState): Tag
+  tags(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Tag]
+  tagsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): TagConnection
+  userProfile(id: ID!, publicationState: PublicationState): UserProfile
+  userProfiles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UserProfile]
+  userProfilesConnection(sort: String, limit: Int, start: Int, where: JSON): UserProfileConnection
+  userUpload(id: ID!, publicationState: PublicationState): UserUploads
+  userUploads(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UserUploads]
+  userUploadsConnection(sort: String, limit: Int, start: Int, where: JSON): UserUploadsConnection
+  welcome(publicationState: PublicationState): Welcome
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+  checkAvailability(username: String!, email: String!): CheckAvailabilityPayload!
+}
+
+type Question {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  valueKey: String
+  options: [ComponentQuestionOptions]
+  questionSet: QuestionSet
+  published_at: DateTime
+  images(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type QuestionAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type QuestionConnection {
+  values: [Question]
+  groupBy: QuestionGroupBy
+  aggregate: QuestionAggregator
+}
+
+type QuestionConnectionCreated_at {
+  key: DateTime
+  connection: QuestionConnection
+}
+
+type QuestionConnectionId {
+  key: ID
+  connection: QuestionConnection
+}
+
+type QuestionConnectionPublished_at {
+  key: DateTime
+  connection: QuestionConnection
+}
+
+type QuestionConnectionQuestionSet {
+  key: ID
+  connection: QuestionConnection
+}
+
+type QuestionConnectionTitle {
+  key: String
+  connection: QuestionConnection
+}
+
+type QuestionConnectionUpdated_at {
+  key: DateTime
+  connection: QuestionConnection
+}
+
+type QuestionConnectionValueKey {
+  key: String
+  connection: QuestionConnection
+}
+
+type QuestionGroupBy {
+  id: [QuestionConnectionId]
+  created_at: [QuestionConnectionCreated_at]
+  updated_at: [QuestionConnectionUpdated_at]
+  title: [QuestionConnectionTitle]
+  valueKey: [QuestionConnectionValueKey]
+  questionSet: [QuestionConnectionQuestionSet]
+  published_at: [QuestionConnectionPublished_at]
+}
+
+input QuestionInput {
+  title: String
+  valueKey: String
+  images: [ID]
+  options: [ComponentQuestionOptionInput]
+  questionSet: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+type QuestionSet {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  desc: String
+  viewCount: Long
+  fallbackResolution: Resolution
+  content: String
+  title: String
+  locale: String
+  published_at: DateTime
+  resolutions(sort: String, limit: Int, start: Int, where: JSON): [Resolution]
+  questions(sort: String, limit: Int, start: Int, where: JSON): [Question]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [QuestionSet]
+}
+
+type QuestionSetAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type QuestionSetConnection {
+  values: [QuestionSet]
+  groupBy: QuestionSetGroupBy
+  aggregate: QuestionSetAggregator
+}
+
+type QuestionSetConnectionContent {
+  key: String
+  connection: QuestionSetConnection
+}
+
+type QuestionSetConnectionCreated_at {
+  key: DateTime
+  connection: QuestionSetConnection
+}
+
+type QuestionSetConnectionDesc {
+  key: String
+  connection: QuestionSetConnection
+}
+
+type QuestionSetConnectionFallbackResolution {
+  key: ID
+  connection: QuestionSetConnection
+}
+
+type QuestionSetConnectionId {
+  key: ID
+  connection: QuestionSetConnection
+}
+
+type QuestionSetConnectionLocale {
+  key: String
+  connection: QuestionSetConnection
+}
+
+type QuestionSetConnectionPublished_at {
+  key: DateTime
+  connection: QuestionSetConnection
+}
+
+type QuestionSetConnectionTitle {
+  key: String
+  connection: QuestionSetConnection
+}
+
+type QuestionSetConnectionUpdated_at {
+  key: DateTime
+  connection: QuestionSetConnection
+}
+
+type QuestionSetConnectionViewCount {
+  key: ID
+  connection: QuestionSetConnection
+}
+
+type QuestionSetGroupBy {
+  id: [QuestionSetConnectionId]
+  created_at: [QuestionSetConnectionCreated_at]
+  updated_at: [QuestionSetConnectionUpdated_at]
+  desc: [QuestionSetConnectionDesc]
+  viewCount: [QuestionSetConnectionViewCount]
+  fallbackResolution: [QuestionSetConnectionFallbackResolution]
+  content: [QuestionSetConnectionContent]
+  title: [QuestionSetConnectionTitle]
+  locale: [QuestionSetConnectionLocale]
+  published_at: [QuestionSetConnectionPublished_at]
+}
+
+input QuestionSetInput {
+  desc: String
+  viewCount: Long
+  resolutions: [ID]
+  fallbackResolution: ID
+  content: String
+  title: String
+  questions: [ID]
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+type Resolution {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  desc: String
+  condition: JSON
+  content: String
+  locale: String
+  published_at: DateTime
+  covers(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  question_sets(sort: String, limit: Int, start: Int, where: JSON): [QuestionSet]
+  posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Resolution]
+}
+
+type ResolutionAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ResolutionConnection {
+  values: [Resolution]
+  groupBy: ResolutionGroupBy
+  aggregate: ResolutionAggregator
+}
+
+type ResolutionConnectionCondition {
+  key: JSON
+  connection: ResolutionConnection
+}
+
+type ResolutionConnectionContent {
+  key: String
+  connection: ResolutionConnection
+}
+
+type ResolutionConnectionCreated_at {
+  key: DateTime
+  connection: ResolutionConnection
+}
+
+type ResolutionConnectionDesc {
+  key: String
+  connection: ResolutionConnection
+}
+
+type ResolutionConnectionId {
+  key: ID
+  connection: ResolutionConnection
+}
+
+type ResolutionConnectionLocale {
+  key: String
+  connection: ResolutionConnection
+}
+
+type ResolutionConnectionPublished_at {
+  key: DateTime
+  connection: ResolutionConnection
+}
+
+type ResolutionConnectionTitle {
+  key: String
+  connection: ResolutionConnection
+}
+
+type ResolutionConnectionUpdated_at {
+  key: DateTime
+  connection: ResolutionConnection
+}
+
+type ResolutionGroupBy {
+  id: [ResolutionConnectionId]
+  created_at: [ResolutionConnectionCreated_at]
+  updated_at: [ResolutionConnectionUpdated_at]
+  title: [ResolutionConnectionTitle]
+  desc: [ResolutionConnectionDesc]
+  condition: [ResolutionConnectionCondition]
+  content: [ResolutionConnectionContent]
+  locale: [ResolutionConnectionLocale]
+  published_at: [ResolutionConnectionPublished_at]
+}
+
+input ResolutionInput {
+  title: String
+  desc: String
+  condition: JSON
+  covers: [ID]
+  question_sets: [ID]
+  content: String
+  posts: [ID]
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+type Tag {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  content: String
+  slug: String
+  summary: String
+  locale: String
+  published_at: DateTime
+  covers(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  tags(sort: String, limit: Int, start: Int, where: JSON): [Tag]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Tag]
+}
+
+type TagAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type TagConnection {
+  values: [Tag]
+  groupBy: TagGroupBy
+  aggregate: TagAggregator
+}
+
+type TagConnectionContent {
+  key: String
+  connection: TagConnection
+}
+
+type TagConnectionCreated_at {
+  key: DateTime
+  connection: TagConnection
+}
+
+type TagConnectionId {
+  key: ID
+  connection: TagConnection
+}
+
+type TagConnectionLocale {
+  key: String
+  connection: TagConnection
+}
+
+type TagConnectionName {
+  key: String
+  connection: TagConnection
+}
+
+type TagConnectionPublished_at {
+  key: DateTime
+  connection: TagConnection
+}
+
+type TagConnectionSlug {
+  key: String
+  connection: TagConnection
+}
+
+type TagConnectionSummary {
+  key: String
+  connection: TagConnection
+}
+
+type TagConnectionUpdated_at {
+  key: DateTime
+  connection: TagConnection
+}
+
+type TagGroupBy {
+  id: [TagConnectionId]
+  created_at: [TagConnectionCreated_at]
+  updated_at: [TagConnectionUpdated_at]
+  name: [TagConnectionName]
+  content: [TagConnectionContent]
+  slug: [TagConnectionSlug]
+  summary: [TagConnectionSummary]
+  locale: [TagConnectionLocale]
+  published_at: [TagConnectionPublished_at]
+}
+
+input TagInput {
+  name: String
+  content: String
+  covers: [ID]
+  slug: String
+  tags: [ID]
+  summary: String
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+input updateAboutInput {
+  data: editAboutInput
+}
+
+type updateAboutPayload {
+  about: About
+}
+
+input updateAquaticInput {
+  where: InputID
+  data: editAquaticInput
+}
+
+type updateAquaticPayload {
+  aquatic: Aquatic
+}
+
+input updateBitInput {
+  where: InputID
+  data: editBitInput
+}
+
+type updateBitPayload {
+  bit: Bit
+}
+
+input updateColorInput {
+  where: InputID
+  data: editColorInput
+}
+
+type updateColorPayload {
+  color: Colors
+}
+
+input updateContributeInput {
+  where: InputID
+  data: editContributeInput
+}
+
+type updateContributePayload {
+  contribute: Contribute
+}
+
+input updateFunFactInput {
+  where: InputID
+  data: editFunFactInput
+}
+
+type updateFunFactPayload {
+  funFact: FunFact
+}
+
+input updatePostInput {
+  where: InputID
+  data: editPostInput
+}
+
+type updatePostPayload {
+  post: Post
+}
+
+input updatePostTagInput {
+  where: InputID
+  data: editPostTagInput
+}
+
+type updatePostTagPayload {
+  postTag: PostTag
+}
+
+input updateProductInput {
+  where: InputID
+  data: editProductInput
+}
+
+type updateProductPayload {
+  product: Product
+}
+
+input updateQuestionInput {
+  where: InputID
+  data: editQuestionInput
+}
+
+type updateQuestionPayload {
+  question: Question
+}
+
+input updateQuestionSetInput {
+  where: InputID
+  data: editQuestionSetInput
+}
+
+type updateQuestionSetPayload {
+  questionSet: QuestionSet
+}
+
+input updateResolutionInput {
+  where: InputID
+  data: editResolutionInput
+}
+
+type updateResolutionPayload {
+  resolution: Resolution
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateTagInput {
+  where: InputID
+  data: editTagInput
+}
+
+type updateTagPayload {
+  tag: Tag
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateUserProfileInput {
+  where: InputID
+  data: editUserProfileInput
+}
+
+type updateUserProfilePayload {
+  userProfile: UserProfile
+}
+
+input updateUserUploadInput {
+  where: InputID
+  data: editUserUploadInput
+}
+
+type updateUserUploadPayload {
+  userUpload: UserUploads
+}
+
+input updateWelcomeInput {
+  data: editWelcomeInput
+}
+
+type updateWelcomePayload {
+  welcome: Welcome
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  tokenVersion: Int
+  userProfile: ID
+  created_by: ID
+  updated_by: ID
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type UserProfile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String
+  cover: UploadFile
+  user: UsersPermissionsUser
+  profileImageUrl: String
+  subsNews: Boolean
+  subsEvent: Boolean
+}
+
+type UserProfileAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UserProfileConnection {
+  values: [UserProfile]
+  groupBy: UserProfileGroupBy
+  aggregate: UserProfileAggregator
+}
+
+type UserProfileConnectionCover {
+  key: ID
+  connection: UserProfileConnection
+}
+
+type UserProfileConnectionCreated_at {
+  key: DateTime
+  connection: UserProfileConnection
+}
+
+type UserProfileConnectionId {
+  key: ID
+  connection: UserProfileConnection
+}
+
+type UserProfileConnectionProfileImageUrl {
+  key: String
+  connection: UserProfileConnection
+}
+
+type UserProfileConnectionSubsEvent {
+  key: Boolean
+  connection: UserProfileConnection
+}
+
+type UserProfileConnectionSubsNews {
+  key: Boolean
+  connection: UserProfileConnection
+}
+
+type UserProfileConnectionUpdated_at {
+  key: DateTime
+  connection: UserProfileConnection
+}
+
+type UserProfileConnectionUser {
+  key: ID
+  connection: UserProfileConnection
+}
+
+type UserProfileConnectionUsername {
+  key: String
+  connection: UserProfileConnection
+}
+
+type UserProfileGroupBy {
+  id: [UserProfileConnectionId]
+  created_at: [UserProfileConnectionCreated_at]
+  updated_at: [UserProfileConnectionUpdated_at]
+  username: [UserProfileConnectionUsername]
+  cover: [UserProfileConnectionCover]
+  user: [UserProfileConnectionUser]
+  profileImageUrl: [UserProfileConnectionProfileImageUrl]
+  subsNews: [UserProfileConnectionSubsNews]
+  subsEvent: [UserProfileConnectionSubsEvent]
+}
+
+input UserProfileInput {
+  username: String
+  cover: ID
+  user: ID
+  profileImageUrl: String
+  subsNews: Boolean
+  subsEvent: Boolean
+  created_by: ID
+  updated_by: ID
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsLogoutPayload {
+  success: Boolean
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+  userProfile: UserProfile
+  tokenVersion: Int
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRefreshTokenPayload {
+  jwt: String!
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type UsersPermissionsRevokeTokenPayload {
+  confirmed: Boolean
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  tokenVersion: Int
+  userProfile: UserProfile
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+  sum: UsersPermissionsUserAggregatorSum
+  avg: UsersPermissionsUserAggregatorAvg
+  min: UsersPermissionsUserAggregatorMin
+  max: UsersPermissionsUserAggregatorMax
+}
+
+type UsersPermissionsUserAggregatorAvg {
+  tokenVersion: Float
+}
+
+type UsersPermissionsUserAggregatorMax {
+  tokenVersion: Float
+}
+
+type UsersPermissionsUserAggregatorMin {
+  tokenVersion: Float
+}
+
+type UsersPermissionsUserAggregatorSum {
+  tokenVersion: Float
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionTokenVersion {
+  key: Int
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUserProfile {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+  tokenVersion: [UsersPermissionsUserConnectionTokenVersion]
+  userProfile: [UsersPermissionsUserConnectionUserProfile]
+}
+
+input UserUploadInput {
+  cover: ComponentMediaMediaUploadInput
+  aquatic: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+type UserUploads {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  cover: ComponentMediaMediaUpload
+  aquatic: Aquatic
+  published_at: DateTime
+}
+
+type UserUploadsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UserUploadsConnection {
+  values: [UserUploads]
+  groupBy: UserUploadsGroupBy
+  aggregate: UserUploadsAggregator
+}
+
+type UserUploadsConnectionAquatic {
+  key: ID
+  connection: UserUploadsConnection
+}
+
+type UserUploadsConnectionCover {
+  key: ID
+  connection: UserUploadsConnection
+}
+
+type UserUploadsConnectionCreated_at {
+  key: DateTime
+  connection: UserUploadsConnection
+}
+
+type UserUploadsConnectionId {
+  key: ID
+  connection: UserUploadsConnection
+}
+
+type UserUploadsConnectionPublished_at {
+  key: DateTime
+  connection: UserUploadsConnection
+}
+
+type UserUploadsConnectionUpdated_at {
+  key: DateTime
+  connection: UserUploadsConnection
+}
+
+type UserUploadsGroupBy {
+  id: [UserUploadsConnectionId]
+  created_at: [UserUploadsConnectionCreated_at]
+  updated_at: [UserUploadsConnectionUpdated_at]
+  cover: [UserUploadsConnectionCover]
+  aquatic: [UserUploadsConnectionAquatic]
+  published_at: [UserUploadsConnectionPublished_at]
+}
+
+type Welcome {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  content: String
+  cover: UploadFile
+  published_at: DateTime
+}
+
+input WelcomeInput {
+  title: String
+  content: String
+  cover: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
